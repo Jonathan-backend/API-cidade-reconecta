@@ -1,0 +1,214 @@
+{
+  "info": {
+    "name": "Reconecta Cidades",
+    "description": "Exemplos fictícios de informações e propostas de melhoria urbana.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "enderecoBase",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "identificador",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Cadastrar informação",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{enderecoBase}}/api/informacoes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Ponto de ônibus sem rampa\",\n  \"descricao\": \"Exemplo fictício para estudo.\",\n  \"categoria\": \"ACESSIBILIDADE\",\n  \"cidade\": \"Cidade Exemplo\",\n  \"bairro\": \"Centro\",\n  \"propostaMelhoria\": \"Instalar uma rampa e melhorar o acesso à área de embarque.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 201\", function () { pm.response.to.have.status(201); });",
+              "if (pm.response.code === 201) pm.collectionVariables.set(\"identificador\", pm.response.json().identificador);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Listar informações",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{enderecoBase}}/api/informacoes"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Filtrar acessibilidade",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{enderecoBase}}/api/informacoes?categoria=ACESSIBILIDADE"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Consultar informação",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{enderecoBase}}/api/informacoes/{{identificador}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Atualizar proposta",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{enderecoBase}}/api/informacoes/{{identificador}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Ponto de ônibus sem rampa\",\n  \"descricao\": \"Exemplo fictício para estudo.\",\n  \"categoria\": \"ACESSIBILIDADE\",\n  \"cidade\": \"Cidade Exemplo\",\n  \"bairro\": \"Centro\",\n  \"propostaMelhoria\": \"Exemplo fictício: instalar rampa e sinalização no ponto.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Excluir informação",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{enderecoBase}}/api/informacoes/{{identificador}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 204\", function () { pm.response.to.have.status(204); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Consultar informação excluída",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{enderecoBase}}/api/informacoes/{{identificador}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 404\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Demonstrar validação",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{enderecoBase}}/api/informacoes",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"\",\n  \"descricao\": \"Exemplo fictício para estudo.\",\n  \"categoria\": \"ACESSIBILIDADE\",\n  \"cidade\": \"Cidade Exemplo\",\n  \"bairro\": \"Centro\",\n  \"propostaMelhoria\": \"Instalar uma rampa e melhorar o acesso à área de embarque.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código HTTP 400\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
