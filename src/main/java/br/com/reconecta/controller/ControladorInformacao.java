@@ -20,8 +20,8 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import br.com.reconecta.documentacao.ConfiguracaoErroDocumentado;
-import br.com.reconecta.documentacao.ExemplosApi;
+import br.com.reconecta.tratamentodoc.ConfiguracaoErroDocumentado;
+import br.com.reconecta.tratamentodoc.ExemplosApi;
 
 @RestController
 @RequestMapping("/api/informacoes")

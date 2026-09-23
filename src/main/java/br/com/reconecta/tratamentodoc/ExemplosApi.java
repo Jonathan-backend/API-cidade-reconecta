@@ -1,4 +1,4 @@
-package br.com.reconecta.documentacao;
+package br.com.reconecta.tratamentodoc;
 
 
 public final class ExemplosApi {

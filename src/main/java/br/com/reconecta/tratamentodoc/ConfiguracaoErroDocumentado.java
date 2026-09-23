@@ -1,4 +1,4 @@
-package br.com.reconecta.documentacao;
+package br.com.reconecta.tratamentodoc;
 
 import java.util.Map;
 import io.swagger.v3.oas.annotations.media.Schema;

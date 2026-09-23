@@ -1,4 +1,4 @@
-package br.com.reconecta.tratamentoDeErro;
+package br.com.reconecta.tratamentoErro;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
