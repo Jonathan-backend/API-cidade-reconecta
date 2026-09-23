@@ -84,5 +84,4 @@ Invoke-WebRequest http://localhost:8080/v3/api-docs -OutFile docs/openapi.json
 Invoke-WebRequest http://localhost:8080/v3/api-docs.yaml -OutFile docs/openapi.yaml
 ```
 
-O contrato também pode ser importado no Postman. Gere novamente os arquivos após
-alterar rotas ou modelos para manter a cópia de entrega atualizada.
+O contrato também pode ser importado no Postman.
