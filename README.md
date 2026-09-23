@@ -6,7 +6,7 @@ API em Java com Spring Boot, organizada para estudo em nível júnior.
 
 Permite cadastrar e consultar informações sobre problemas urbanos e propostas de melhoria. Cada registro informa o tema, a cidade, o bairro, a situação encontrada e uma sugestão de solução.
 
-**Os dados são cadastrados pelos usuários.** A API não busca dados externos, não compara cidades e não determina automaticamente quais opções são as melhores. Os exemplos deste projeto são fictícios.
+**Os dados são cadastrados pelos usuários.** A API não busca dados externos, não compara cidades e não determina automaticamente quais opções são as melhores.
 
 ### Categorias
 
