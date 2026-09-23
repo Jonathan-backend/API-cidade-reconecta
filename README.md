@@ -137,10 +137,10 @@ br/com/reconecta/
 ├── model/
 │   ├── InformacaoUrbana.java
 │   └── Categoria.java
-├── erro/
+├── tratamentoDeErro/
 │   └── TratadorDeErros.java
 └── documentacao/
-    ├── ErroDocumentado.java
+    ├── ConfiguracaoErroDocumentado.java
     └── ExemplosApi.java
 ```
 
@@ -179,18 +179,13 @@ Classes, métodos próprios e variáveis usam português sem acentos nos identif
 Os nomes exigidos pelo Java e pelas bibliotecas permanecem, como `main`, `save`, `findById`, `@Entity` e `@GetMapping`.
 A anotação `@JsonProperty` permite que os campos sejam enviados e recebidos em JSON mesmo com os métodos `obter` e `definir`.
 
-Para simplificar o estudo, usamos a própria entidade como entrada, listas simples, condicionais e laços. Há somente uma entidade e um filtro opcional.
-Veja [o guia de estudo](docs/GUIA_JUNIOR.md) para acompanhar um cadastro linha a linha.
+
 
 ## Banco local
 
 Os registros ficam em `data/cidades.mv.db` e permanecem após reiniciar.
-O banco antigo de tarefas não foi apagado; esta API usa um arquivo separado.
 Os testes usam um banco independente em memória.
 A estrutura é criada pelo Hibernate automaticamente.
-
-Este é um exercício local: não possui autenticação e escuta em `127.0.0.1:8080`.
-A API começa sem registros; use o Swagger ou Postman para cadastrar exemplos.
 
 ## Testes e documentação
 
@@ -199,7 +194,7 @@ A API começa sem registros; use o Swagger ou Postman para cadastrar exemplos.
 ```
 
 Os testes cobrem cadastro, consulta, atualização, exclusão, seis categorias, filtro, lista vazia, validações, erros, proteção do identificador e Swagger.
-Relatórios em `target/surefire-reports/`.
+Relatórios de teste automatizados em `target/surefire-reports/br.com.reconecta.TesteinformaçaoUrbana`.
 
 - Swagger: http://localhost:8080/swagger-ui/index.html
 - Contrato OpenAPI: http://localhost:8080/v3/api-docs
@@ -208,10 +203,4 @@ Relatórios em `target/surefire-reports/`.
 
 Na coleção Postman, o primeiro cadastro salva automaticamente a variável `identificador`. Execute as requisições numeradas na ordem.
 
-## Sprints e entrega
-
-Veja [o planejamento](docs/PLANEJAMENTO.md).
-
-A versão anterior de tarefas foi substituída. A rota `/api/tarefas` não existe mais.
-O código permanece **local**, conforme solicitado. A publicação pública no GitHub exigida pela atividade continua adiada.
 
